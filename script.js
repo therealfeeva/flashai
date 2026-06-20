@@ -10,29 +10,45 @@ function generateFlashcards() {
 
     sentences.forEach(sentence => {
 
-        if (sentence.trim() !== "") {
+        sentence = sentence.trim();
 
-            let words = sentence.trim().split(" ");
+        if (sentence !== "") {
 
-            let keyword = words[0];
+            let words = sentence.split(" ");
+
+            let keyword = words.find(word => 
+                word.length > 4
+            );
+
+            if (!keyword) {
+                keyword = words[0];
+            }
 
             cards += `
-            <div class="card">
+            <div class="card" onclick="flipCard(this)">
 
-                <h2>Flashcard</h2>
+                <div class="front">
+                    <h2>❓ ${keyword}</h2>
+                    <p>Click to reveal answer</p>
+                </div>
 
-                <h3>Question:</h3>
-                <p>What is ${keyword}?</p>
-
-                <h3>Answer:</h3>
-                <p>${sentence.trim()}.</p>
+                <div class="back">
+                    <h2>💡 Answer</h2>
+                    <p>${sentence}.</p>
+                </div>
 
             </div>
-            <br>
             `;
         }
 
     });
 
     flashcards.innerHTML = cards;
+}
+
+
+function flipCard(card) {
+
+    card.classList.toggle("flipped");
+
 }

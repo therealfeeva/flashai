@@ -37,3 +37,35 @@ button {
     border-radius: 15px;
     text-align: left;
 }
+
+.card {
+    background: white;
+    width: 400px;
+    min-height: 180px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: center;
+}
+
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+
+.back {
+    display: none;
+}
+
+
+.card.flipped .front {
+    display: none;
+}
+
+
+.card.flipped .back {
+    display: block;
+}
