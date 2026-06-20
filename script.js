@@ -28,7 +28,7 @@ function generateFlashcards() {
             <div class="card" onclick="flipCard(this)">
 
                 <div class="front">
-                    <h2>❓ ${keyword}</h2>
+                    <h2>❓ What is ${keyword}?</h2>
                     <p>Click to reveal answer</p>
                 </div>
 
@@ -50,5 +50,21 @@ function generateFlashcards() {
 function flipCard(card) {
 
     card.classList.toggle("flipped");
+
+}
+
+function shuffleCards() {
+
+    let container = document.getElementById("flashcards");
+
+    let cards = Array.from(container.children);
+
+    cards.sort(() => Math.random() - 0.5);
+
+    container.innerHTML = "";
+
+    cards.forEach(card => {
+        container.appendChild(card);
+    });
 
 }
